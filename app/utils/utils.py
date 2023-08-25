@@ -2,16 +2,38 @@ from datetime import datetime
 import logging
 import os
 from openpyxl import load_workbook
+import requests
 from tabulate import tabulate
 from prettytable import PrettyTable
 import config
 from config import ROOT_DIR
+import calendar
 
 logger = logging.getLogger(__name__)
 raspDir = os.path.join(ROOT_DIR, "Rasp/")
 curr_month = datetime.now().strftime("%m.%Y")
 
 fileNAme = os.path.join(raspDir, curr_month + ".xlsx")
+
+
+def get_month():
+    months_russian = [
+        "январь",
+        "февраль",
+        "март",
+        "апрель",
+        "май",
+        "июнь",
+        "июль",
+        "август",
+        "сентябрь",
+        "октябрь",
+        "ноябрь",
+        "декабрь",
+    ]
+    current_month = datetime.now().month
+    month = months_russian[current_month - 1]
+    return month
 
 
 def get_people():
@@ -58,8 +80,7 @@ def main_duty_new(now, q):
                         sheet.cell(row=i, column=5).value,
                     ]
                 )
-        table_month = sheet.cell(row=1, column=1).value
-        # q = "\n".join(duty_list)
+        table_month = sheet.cell(row=1, column=2).value
         table = tabulate(
             data, tablefmt="grid", stralign="center"
         )  # You can use different table formats

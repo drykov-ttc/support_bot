@@ -1,7 +1,7 @@
+from datetime import datetime
 import logging
 import os
 import signal
-import sys
 from app.bot import App
 import config
 
@@ -22,7 +22,8 @@ logger = logging.getLogger(__name__)
 def main():
     bot = App()
     logger.info("Bot started.")
-
+    month = datetime.today().month
+    print(month)
     def handle_exit(signum, frame):
         logger.info("Received signal to exit. Stopping the bot...")
         bot.stop()

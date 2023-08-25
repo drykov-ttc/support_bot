@@ -1,9 +1,11 @@
 from datetime import datetime
 import logging
 import os
+import re
 import time
+import requests
 from telebot import types
-from app.utils.utils import get_people, main_duty_new
+from app.utils.utils import get_holidays, get_people, main_duty_new
 import config
 from config import ROOT_DIR
 
@@ -104,12 +106,7 @@ def send_duty(message, bot):
             if file.split(".")[-1] == "png":
                 picFile = os.path.join(picDir, file)
                 f = open(picFile, "rb")
-                bot.send_photo(
-                    message.chat.id,
-                    f,
-                    None,
-                    reply_markup=keyboard
-                )
+                bot.send_photo(message.chat.id, f, None, reply_markup=keyboard)
             time.sleep(1)
     except Exception as e:
         logger.error(f"{e}")
@@ -133,13 +130,17 @@ def today(m, bot):
             bot.send_message(
                 m.chat.id,
                 "Сегодня выходной! \nОтдохните от работы, погуляйте на свежем воздухе :)",
-                reply_markup=keyboard
+                reply_markup=keyboard,
             )
     except Exception as e:
         logger.error(f"{e}")
         print(f"Error: {e}")
         bot.reply_to(m, "Ошибочка!", reply_markup=types.ReplyKeyboardRemove())
-        bot.send_message(config.admin_id, e,parse_mode="HTML",)
+        bot.send_message(
+            config.admin_id,
+            e,
+            parse_mode="HTML",
+        )
 
 
 def tomorrow(m, bot):
@@ -159,13 +160,17 @@ def tomorrow(m, bot):
             bot.send_message(
                 m.chat.id,
                 "Завтра выходной! \nПроведите это время с пользой для себя :)",
-                reply_markup=keyboard
+                reply_markup=keyboard,
             )
     except Exception as e:
         logger.error(f"{e}")
         print(f"Error: {e}")
         bot.reply_to(m, "Ошибочка!")
-        bot.send_message(config.admin_id, e,parse_mode="HTML",)
+        bot.send_message(
+            config.admin_id,
+            e,
+            parse_mode="HTML",
+        )
 
 
 # @bot.message_handler(func=lambda message: True, content_types=["text"])
@@ -180,12 +185,17 @@ def duty_main(m, bot):
                 m.chat.id,
                 "К сожалению я не знаю данную команду. "
                 "\nПопробуйте ввести /help, чтобы узнать доступные команды",
-                reply_markup=keyboard
+                reply_markup=keyboard,
             )
     except Exception as e:
         logger.error(f"{e}")
         print(f"Error: {e}")
-        bot.send_message(config.admin_id, e,parse_mode="HTML",)
+        bot.send_message(
+            config.admin_id,
+            e,
+            parse_mode="HTML",
+        )
+
 
 
 def register_handlers(bot):

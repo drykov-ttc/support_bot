@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+
+
 from imports import (
     ROOT_DIR,
     logFile,

@@ -124,7 +124,7 @@ def today(m, bot):
         if q != 0:
             bot.send_message(
                 m.chat.id,
-                "Сегодня дежурит\n<pre>" + q + "</pre>",
+                "Сегодня дежурит\n" + q,
                 reply_markup=keyboard,
                 parse_mode="HTML",
             )
@@ -154,7 +154,7 @@ def tomorrow(m, bot):
         if q != 0:
             bot.send_message(
                 m.chat.id,
-                "Завтра дежурит\n<pre>" + q + "</pre>",
+                "Завтра дежурит\n" + q,
                 reply_markup=keyboard,
                 parse_mode="HTML",
             )

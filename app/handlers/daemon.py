@@ -29,6 +29,7 @@ def clock(interval, bot):  # Ежедневный постинг
                 time_reply = "17:00"
             else:  # Weekend or holiday (5 to 6, Saturday and Sunday)
                 time_start = "08:45"
+                time_reply = "20:00"
             time_x = d.strftime("%H:%M")
             if time_x == time_start or time_x == time_reply:
                 if time_x == time_start:

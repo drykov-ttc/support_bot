@@ -74,18 +74,25 @@ def main_duty_new(now, q):
                 sheet.cell(row=i, column=(now + 5)).value == "Х"
                 or sheet.cell(row=i, column=(now + 5)).value == 1
             ):
-                data.append(["", sheet.cell(row=i, column=3).value])
+                phone_value = sheet.cell(row=i, column=5).value
+                phones = phone_value.split(", ")  # Разделяем строку на две части
+                formatted_phone = "\n".join(phones)
                 data.append(
-                    [
-                        sheet.cell(row=i, column=1).value,
-                        sheet.cell(row=i, column=5).value,
-                    ]
+                    '<b>'+(sheet.cell(row=i, column=3).value)
+                    + "</b>\n"
+                    + (sheet.cell(row=i, column=1).value)
+                    + " "
+                    + (sheet.cell(row=i, column=2).value)
+                    + "\n<i>("
+                    + (sheet.cell(row=i, column=4).value)
+                    + ")</i>"
+                    + "<pre>"
+                    + (formatted_phone)
+                    + "</pre>\n"
                 )
         table_month = sheet.cell(row=1, column=2).value
-        table = tabulate(
-            data, tablefmt="grid", stralign="center"
-        )  # You can use different table formats
-        return (table, table_month)
+        q = "\n".join(data)
+        return (q, table_month)
     except Exception as e:
         logger.error(f"{e}")
         print(f"Error: {e}")

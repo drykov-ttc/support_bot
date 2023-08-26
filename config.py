@@ -1,7 +1,3 @@
-import os
-
-ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-
 token = "6418394952:AAGLqivfu6AC-cOvoJC0CKtko90WbfSKUWc"
 chat_id = "-1001915294726"
 admin_id = "632646448"

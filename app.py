@@ -1,29 +1,24 @@
-from datetime import datetime
-import logging
-import os
-import signal
-from app.bot import App
-import config
-
-from config import ROOT_DIR
-
-
-logFile = os.path.join(ROOT_DIR, config.LOG_DIR, config.LOG_STABLE)
-
-logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    level=logging.INFO,
-    filename=logFile,
+from imports import (
+    ROOT_DIR,
+    logFile,
+    picDir,
+    raspDir,
+    fileNAme,
+    os,
+    logging,
+    datetime,
+    signal,
+    config,
+    logger,
 )
 
-logger = logging.getLogger(__name__)
+from app.bot import App
 
 
 def main():
     bot = App()
     logger.info("Bot started.")
-    month = datetime.today().month
-    print(month)
+
     def handle_exit(signum, frame):
         logger.info("Received signal to exit. Stopping the bot...")
         bot.stop()

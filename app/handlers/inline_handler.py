@@ -1,20 +1,22 @@
-from datetime import datetime
-import logging
-import os
-import time
-from openpyxl import load_workbook
-from telebot import types
 from app.utils.utils import get_people, main_duty_new
-import config
-import requests
-from config import ROOT_DIR
-
-logger = logging.getLogger(__name__)
-raspDir = os.path.join(ROOT_DIR, "Rasp/")
-picDir = os.path.join(ROOT_DIR, "pic/")
-curr_month = datetime.now().strftime("%m.%Y")
-
-fileNAme = os.path.join(raspDir, curr_month + ".xlsx")
+from imports import (
+    ROOT_DIR,
+    logFile,
+    picDir,
+    raspDir,
+    fileNAme,
+    os,
+    logging,
+    datetime,
+    signal,
+    curr_month,
+    logger,
+    types,
+    time,
+    config,
+    requests,
+    load_workbook
+)
 
 
 # @bot.callback_query_handler(func=lambda call: True)

@@ -1,20 +1,22 @@
-from datetime import datetime
-import logging
-import os
-import re
-import time
-import requests
-from telebot import types
-from app.utils.utils import get_holidays, get_people, main_duty_new
-import config
-from config import ROOT_DIR
+from app.utils.utils import get_people, main_duty_new
+from imports import (
+    ROOT_DIR,
+    logFile,
+    picDir,
+    raspDir,
+    fileNAme,
+    os,
+    logging,
+    datetime,
+    signal,
+    curr_month,
+    logger,
+    types,
+    time,
+    config,
+)
 
-logger = logging.getLogger(__name__)
-raspDir = os.path.join(ROOT_DIR, "Rasp/")
-picDir = os.path.join(ROOT_DIR, "pic/")
-curr_month = datetime.now().strftime("%m.%Y")
 
-fileNAme = os.path.join(raspDir, curr_month + ".xlsx")
 keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
 keyboard.add(
     *[types.KeyboardButton(name) for name in ["Дежурный сегодня?", "Дежурный завтра?"]]
@@ -195,7 +197,6 @@ def duty_main(m, bot):
             e,
             parse_mode="HTML",
         )
-
 
 
 def register_handlers(bot):

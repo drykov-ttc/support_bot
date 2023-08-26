@@ -1,15 +1,21 @@
-from datetime import datetime
-import logging
-import os
-import time
-import config
-from telebot import types
+from imports import (
+    ROOT_DIR,
+    logFile,
+    picDir,
+    raspDir,
+    fileNAme,
+    os,
+    logging,
+    datetime,
+    signal,
+    curr_month,
+    logger,
+    types,
+    time,
+    config,
+)
 
 from app.utils.utils import main_duty_new, get_month
-from config import ROOT_DIR
-
-logger = logging.getLogger(__name__)
-picDir = os.path.join(ROOT_DIR, "pic/")
 
 
 def clock(interval, bot):  # Ежедневный постинг

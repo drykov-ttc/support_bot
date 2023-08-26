@@ -1,23 +1,29 @@
 ﻿# -*- coding: utf-8 -*-
-import logging
-import sys
 from app.handlers import command_handler, inline_handler
 from app.handlers.daemon import clock
-import telebot
-import threading
-import os
-import config
-from config import ROOT_DIR
 
-logFile = os.path.join(ROOT_DIR, config.LOG_DIR, config.LOG_STABLE)
 
-logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    level=logging.INFO,
-    filename=logFile,
+from imports import (
+    ROOT_DIR,
+    logFile,
+    picDir,
+    raspDir,
+    fileNAme,
+    os,
+    logging,
+    datetime,
+    signal,
+    curr_month,
+    logger,
+    types,
+    time,
+    config,
+    requests,
+    load_workbook,
+    tabulate,
+    telebot,
+    threading,
 )
-
-logger = logging.getLogger(__name__)
 
 
 class App:

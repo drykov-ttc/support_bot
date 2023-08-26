@@ -1,19 +1,22 @@
-from datetime import datetime
-import logging
-import os
-from openpyxl import load_workbook
-import requests
-from tabulate import tabulate
-from prettytable import PrettyTable
-import config
-from config import ROOT_DIR
-import calendar
-
-logger = logging.getLogger(__name__)
-raspDir = os.path.join(ROOT_DIR, "Rasp/")
-curr_month = datetime.now().strftime("%m.%Y")
-
-fileNAme = os.path.join(raspDir, curr_month + ".xlsx")
+from imports import (
+    ROOT_DIR,
+    logFile,
+    picDir,
+    raspDir,
+    fileNAme,
+    os,
+    logging,
+    datetime,
+    signal,
+    curr_month,
+    logger,
+    types,
+    time,
+    config,
+    requests,
+    load_workbook,
+    tabulate,
+)
 
 
 def get_month():
@@ -43,7 +46,6 @@ def get_people():
     people = []
     nicknames = []
     wb = load_workbook(fileNAme)
-    print(wb)
     sheet = wb["Лист1"]
     for i in range(3, 10):
         if (
@@ -58,7 +60,6 @@ def get_people():
             count_people += 1
         else:
             last = 1
-    print(f"{people, count_people, nicknames, today_id}")
     return (people, count_people, nicknames, today_id)
     wb.save(fileNAme)
 

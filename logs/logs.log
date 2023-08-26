@@ -118,3 +118,4 @@
 2023-08-26 15:10:48,364 - imports - INFO - Received signal to exit. Stopping the bot...
 2023-08-26 15:10:49,860 - imports - INFO - Bot started.
 2023-08-26 17:23:12,337 - imports - ERROR - An error occurred during bot execution: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=25)
+2023-08-26 17:23:38,184 - imports - INFO - Bot started.

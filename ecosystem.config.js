@@ -8,10 +8,6 @@ module.exports = {
     interpreter: 'python3',
     max_restarts: 10,
     ignore_watch: ["logs", ".vscode"],
-  }, {
-    name: 'echo-python-3',
-    cmd: 'hello.py',
-    interpreter: 'python3'
   }],
 
   deploy : {
